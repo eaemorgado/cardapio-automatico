@@ -1,7 +1,8 @@
 // configuração inicial do servidor local
 const express = require("express");
 const app = express();
-const port = 2022
+const port = 3000
+var session = require("express-session");
 
 // configurando local dos complementos 
 app.use(express.static("app/public"));
