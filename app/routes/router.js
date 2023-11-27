@@ -15,9 +15,36 @@ router.get("/sair", limparSessao, function (req, res) {
   });
 
 router.get("/", function(req, res){
-    res.render("pages/home", {autenticado: req.session.autenticado})
+    res.render("pages/1-home-user", {autenticado: req.session.autenticado})
 })
 
+router.get("/dashboard", function(req, res){
+  res.render("pages/2-dashboard-seller", {autenticado:req.session.autenticado})
+})
+
+router.get("/catalogo", function(req, res){
+  res.render("pages/3-catalogo-seller", {autenticado:req.session.autenticado})
+})
+
+router.get("/informacoes", function(req, res){
+  res.render("pages/4-informacoes-seller", {autenticado:req.session.autenticado})
+})
+
+router.get("/chat", function(req, res){
+  res.render("pages/5-chat-seller", {autenticado:req.session.autenticado})
+})
+
+router.get("/vendas", function(req, res){
+  res.render("pages/6-vendas-seller", {autenticado:req.session.autenticado})
+})
+
+router.get("/assinatura", function(req, res){
+  res.render("pages/7-assinatura-seller", {autenticado:req.session.autenticado})
+})
+
+router.get("/configuracoes", function(req, res){
+  res.render("pages/8-configuracoes-seller", {autenticado:req.session.autenticado})
+})
 
 
 module.exports = router
