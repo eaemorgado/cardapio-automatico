@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="css/reset.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="css/globalconfig.css">
+    <link rel="stylesheet" href="js/script.js">
     <title> - Dashboard</title>
 </head>
 <body>
@@ -19,6 +20,13 @@
             <i class='bx bxs-user-circle' id="user-icon"></i>
             <i class='bx bx-chevron-down' id="user-more"></i>
         </div>
+        <div id="seller-not" class="">
+            <div>
+                <i class='bx bx-chevron-left' id="backrow"></i>
+                <span>Notificações</span>
+            </div>
+            
+        </div>
     </header>
     <main>
         <nav>
@@ -31,9 +39,24 @@
             <a href="/configuracoes"><button><i class='bx bx-cog'></i>Configurações</button></a>
         </nav>
         <section>
-            <h1>morgado</h1>
+            <h1>Dashboard</h1>
         </section>
     </main>
+    <script>
+        // configuração das notificações 
+
+        const notbutton = document.getElementById("user-bell");
+        const notbar = document.getElementById("seller-not");
+        const notclose = document.getElementById("backrow");
+
+        notbutton.addEventListener("click", ()=>{
+            notbar.classList.add("show");
+        })
+
+        notclose.addEventListener("click", ()=>{
+            notbar.classList.remove("show");
+        })
+    </script>
     
 </body>
 </html>
