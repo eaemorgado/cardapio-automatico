@@ -6,9 +6,34 @@
     <link rel="stylesheet" href="css/reset.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="css/globalconfig.css">
+    <link rel="stylesheet" href="css/3-catalogo-seller.css">
     <title> - Catalogo</title>
 </head>
 <body>
+    <div class="espaço-addprod">
+        <div id="tabela-addprod">
+            <form action="post">
+                <h3>Informações do Produto</h3>
+                <span>Imagem</span>
+                <input type="file" name="" id="espaco-img-add">
+                <span>Nome</span>
+                <input type="text" name="" id="espaco-txt-add">
+                <span>Descrição</span>
+                <input type="text" name="" id="espaco-txt-add">
+                <span>Preço</span>
+                <input type="number" name="" id="espaco-txt-add">
+                <span>Categoria</span>
+                <select name="" id="espaco-select-add">
+                    <option value="">Nenhuma Selecionada</option>
+                </select>
+                <a href="/catalogo">
+                    <button>Cancelar</button>
+                </a>
+                <button type="submit">Publicar</button>
+            </form>
+        </div>
+        <div id="fundo-addprod"><h1>morgadoi</h1></div>
+    </div>
     <header>
         <div>
             <img src="" alt="logo">
@@ -38,7 +63,50 @@
             <a href="/configuracoes"><button><i class='bx bx-cog'></i>Configurações</button></a>
         </nav>
         <section>
-            <h1>Catalogo</h1>
+            <article id="article1">
+                <h1>Catalogo</h1>
+                <div>
+                    <div>   
+                        <input type="text" id="pesquisa" value="Pesquisar" onfocus="this.value='';">
+                        <button id="pesquisar-icon"><i class='bx bx-search' ></i></button>
+                    </div>
+                    <a href="">
+                        <div>
+                            
+                        </div>
+                    </a>
+                    <a href="">
+                        <input type="button" id="button-add" value="Adicionar produto">
+                    </a>
+                </div>
+                
+            </article>
+            <article id="article2">
+                <table>
+                    <tr>
+                        <th>Produto</th>
+                      <th>Nome</th>
+                      <th>Categoria</th>
+                      <th>Valor</th>  
+                      <th>Ação</th> 
+                    </tr>
+                    <tr>
+                        <td><img src="" alt="img_produto"></td>
+                      <td>Hamburguer</td>
+                      <td>Lanche</td>    
+                      <td>R$ 00,00</td>
+                      <td>
+                        <a href="">
+                            <button id="table-editar">Editar</button>
+                        </a>
+                        <a href="">
+                            <button id="table-deletar">Deletar</button>
+                        </a>
+                      </td>
+                    </tr>
+                  </table>
+            </article>
+            
         </section>
     </main>
     <script>

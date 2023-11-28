@@ -1,0 +1,158 @@
+#article1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+}
+
+#article1 div {
+    display: flex;
+    flex-direction: row;
+    
+}
+
+#pesquisa {
+    height: 25px;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    color: #B5B5B5;
+}
+
+#pesquisar-icon {
+    border: none;
+    background-color: #FF2149;
+    color: #FFf;
+    border-radius: 10px;
+    height: auto;
+    width: 45px;
+    margin-left: 10px;
+    margin-right: 20px;
+    transition: 0.2s ease-in-out;
+}
+
+#pesquisar-icon:hover {
+    transform: scale(1.03);
+    transition: 0.3 cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+#button-add {
+    height: 45px;
+    border: none;
+    color: #FFf;
+    background-color: #FF2149;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: 0.2s ease-in-out;
+    
+    
+}
+
+#button-add:hover {
+    transform: scale(1.03);
+    transition: 0.3 cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+/* 
+configuração da tabela de vendas */
+
+
+#article2 {
+    background-color: #FFf;
+    height: 100vh;
+    border-radius: 20px;
+    margin-top: 30px;
+    
+}
+
+
+  tr {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border: 1px solid #E8E8E8;
+    padding: 20px;
+  }
+
+  td, th {
+    text-align: left;
+  }
+
+  table {
+    width: 100%;
+    border: 1px solid #E8E8E8;
+  }
+
+  #table-editar, #table-deletar {
+    border: none;
+    height: 30px;
+    width: 60px;
+    border-radius: 5px;
+    
+  }
+
+  #table-editar {
+    background-color: green;
+    color: #fff;
+    font-weight: bold;
+  }
+
+  #table-deletar {
+    background-color: #FF2149;
+    color: #fff;
+    font-weight: bold;
+  }
+
+/* Configuração para add produto */
+
+
+.espaço-addprod {
+    z-index: 5;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+#fundo-addprod {
+   background-color: #000;
+   height: 100%;
+   width: 100%;
+    opacity: 40%;
+}
+
+#tabela-addprod {
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 80px;
+    
+}
+
+#tabela-addprod form{
+    height: 500px;
+    width: 400px;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+#tabela-addprod form h3 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#espaco-txt-add, #espaco-select-add {
+    min-height: 30px;
+    height: auto;
+    border: solid 1px #B5B5B5 ;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+
+

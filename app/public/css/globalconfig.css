@@ -123,15 +123,17 @@ nav button {
     font-size: 18px;
     border-radius: 10px;
     padding: 10px;
+    transition: 0.3s ease-in-out;
 }
 nav button:hover {
     background-color: #f1f1f1;
-
+    transition: 0.3 cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 .actived:hover {
     background-color: #ff4466;
     color: #fff;
+    transition: 0.3 cubic-bezier(0.075, 0.82, 0.165, 1);
 
 }
 
