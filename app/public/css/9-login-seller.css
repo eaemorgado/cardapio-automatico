@@ -1,0 +1,81 @@
+body {
+    background-color: #D9D9D9;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+main {
+    display: flex;
+    justify-content: center;
+    margin-top: 7%;
+}
+
+#espaco-form-login {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    width: 80vh;
+    height: auto;
+    padding: 3%;
+    border-radius: 15px;
+
+
+}
+
+#espaco-form-login form{
+    display: flex;
+    flex-direction: column;
+}
+
+form h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+#espaco-txt-login {
+    border-radius: 5px;
+    border: 1px solid #D9D9D9;
+    height: 30px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    
+}
+
+
+form span, i {
+    color: #979797;
+}
+
+form button {
+    height: 45px;
+    border: none;
+    color: #FFf;
+    background-color: #FF2149;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#espaco-senha {
+    display: flex;
+    justify-content: space-between;
+}
+
+form button:hover {
+    transform: scale(1.03);
+    transition: 0.3 cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+form h4 {
+    color: #979797;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+    font-size: larger;
+}

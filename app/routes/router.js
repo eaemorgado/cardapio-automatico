@@ -46,5 +46,12 @@ router.get("/configuracoes", function(req, res){
   res.render("pages/8-configuracoes-seller", {autenticado:req.session.autenticado})
 })
 
+router.get("/login", function(req, res){
+  res.render("pages/9-login-seller", {autenticado:req.session.autenticado})
+})
+
+router.get("/cadastro", function(req, res){
+  res.render("pages/10-cadastro-seller", {autenticado:req.session.autenticado})
+})
 
 module.exports = router

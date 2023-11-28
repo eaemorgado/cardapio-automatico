@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,10 +11,10 @@
 </head>
 
 <body>
-    <div class="espaço-addprod">
+    <div id="espaço-addprod" class="">
         <div id="tabela-addprod">
             <form action="post">
-                <i class='bx bx-chevron-left' id="backrow"></i>
+                <i class='bx bx-chevron-left' id="backrow2"></i>
                 <h3>Informações do Produto</h3>
                 <span>Imagem</span>
                 <input type="file" name="" id="espaco-img-add">
@@ -77,9 +77,9 @@
                             
                         </div>
                     </a>
-                    <a href="">
+                    
                         <input type="button" id="button-add" value="Adicionar produto">
-                    </a>
+                    
                 </div>
                 
             </article>
@@ -125,6 +125,21 @@
         notclose.addEventListener("click", ()=>{
             notbar.classList.remove("show");
         })
+
+        // configuração do popup produto 
+
+        const addbutton = document.getElementById("button-add");
+        const formProd = document.getElementById("espaço-addprod");
+        const closepopup = document.getElementById("backrow2");
+
+        addbutton.addEventListener("click", ()=>{
+            formProd.classList.add("show");
+        })
+
+        closepopup.addEventListener("click", ()=>{
+            formProd.classList.remove("show");
+        })
+
     </script>
 </body>
 </html>

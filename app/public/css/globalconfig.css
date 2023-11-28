@@ -34,10 +34,12 @@ header {
 
 #user-icon {
     font-size: 35px;
+    cursor: pointer;
 }
 
 #user-bell, #user-more{
     color: #B5B5B5;
+    cursor: pointer;
 }
 
 #user-bell:hover{
@@ -85,6 +87,7 @@ header {
 #backrow {
     font-size: 50px;
     color: #B5B5B5;
+    cursor: pointer;
 }
 
 #backrow:hover {
@@ -124,6 +127,7 @@ nav button {
     border-radius: 10px;
     padding: 10px;
     transition: 0.3s ease-in-out;
+    cursor: pointer;
 }
 nav button:hover {
     background-color: #f1f1f1;

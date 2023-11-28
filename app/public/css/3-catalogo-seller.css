@@ -29,6 +29,7 @@
     margin-left: 10px;
     margin-right: 20px;
     transition: 0.2s ease-in-out;
+    cursor: pointer;
 }
 
 #pesquisar-icon:hover {
@@ -44,6 +45,7 @@
     border-radius: 10px;
     font-weight: bold;
     transition: 0.2s ease-in-out;
+    cursor: pointer;
     
     
 }
@@ -94,27 +96,29 @@ configuração da tabela de vendas */
     background-color: green;
     color: #fff;
     font-weight: bold;
+    cursor: pointer;
   }
 
   #table-deletar {
     background-color: #FF2149;
     color: #fff;
     font-weight: bold;
+    cursor: pointer;
   }
 
 /* Configuração para add produto */
 
 
-.espaço-addprod {
+#espaço-addprod {
     z-index: 5;
     position: absolute;
     height: 100%;
     width: 100%;
-    top: -1000;
+    top: -1000px;
 }
 
-.espaço-addprod.show{
-    top: 0
+#espaço-addprod.show{
+    top: 0;
 }
 
 
@@ -158,6 +162,17 @@ configuração da tabela de vendas */
     border-radius: 5px;
     margin-top: 10px;
     margin-bottom: 20px;
+}
+
+
+#backrow2 {
+    font-size: 50px;
+    color: #B5B5B5;
+    cursor: pointer;
+}
+
+#backrow2:hover {
+    transform: scale(1.03);
 }
 
 
