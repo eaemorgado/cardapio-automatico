@@ -110,7 +110,13 @@ configuração da tabela de vendas */
     position: absolute;
     height: 100%;
     width: 100%;
+    top: -1000;
 }
+
+.espaço-addprod.show{
+    top: 0
+}
+
 
 #fundo-addprod {
    background-color: #000;
