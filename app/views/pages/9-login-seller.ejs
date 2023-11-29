@@ -7,9 +7,49 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="css/globalconfig.css">
     <link rel="stylesheet" href="css/9-login-seller.css">
+    <script src="js/notify.js"></script>
+    <!-- CSS -->
+    <!-- https://github.com/simple-notify/simple-notify -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.css" />
+    <!-- JS -->
+    <script src="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.js"></script>
     <title> - login</title>
 </head>
 <body>
+    <% 
+    let msgErro = {"email_parceira":"", "senha_parceira":""};
+    let avisoErro = {"email_parceira":"", "senha_parceira":""};
+    if(listaErros){
+        listaErros.errors.forEach(function(itemErro){
+            if(itemErro.path == "email_parceira"){
+                avisoErro.email_parceira = "erro";
+                msgErro.email_parceira += " "+itemErro.msg;
+                %>
+                <script>
+                    notify("Erro no preenchimento","Verifique o campo email<br><%= itemErro.msg%>", "error", "center")                        
+                </script>
+                <%
+            }
+            if(itemErro.path == "senha_parceira"){
+                avisoErro.senha_parceira = "erro";
+                msgErro.senha_parceira = itemErro.msg;
+                %>
+                <script>
+                    notify("Erro no preenchimento","Verifique o campo senha<br><%= itemErro.msg%>", "error", "center")                        
+                </script>
+                <%                
+            }
+            
+        })
+    }
+    if (dadosNotificacao) { %>
+        <script>
+                notify("<%= dadosNotificacao.titulo%>","<%= dadosNotificacao.mensagem%>", "<%= dadosNotificacao.tipo%>", "center")
+                if("<%= dadosNotificacao.tipo %>" == "success"){
+                    setTimeout(function(){window.location="/dashboard"}, 3000)
+                }                        
+        </script>
+    <% } %>
     <main>
         <div id="espaco-form-login">
             <form action="/logar" method="post">
@@ -18,12 +58,18 @@
                     <i class='bx bx-envelope'></i>
                     <span>Email</span>
                 </div>
-                <input type="text" id="espaco-txt-login" name="email_parceira" autocomplete="off">
+                <input type="text" id="espaco-txt-login" class="<%= avisoErro.email_parceira %>" name="email_parceira" autocomplete="off">
+                <span class="erro">
+                    <%= msgErro.email_parceira %>
+                  </span>
                 <div>
                     <i class='bx bx-key'></i>
                     <span>Senha</span>
                 </div>
-                <input type="password" id="espaco-txt-login" name="senha_parceira" autocomplete="off">
+                <input type="password" id="espaco-txt-login" class="<%= avisoErro.senha_parceira %>" name="senha_parceira" autocomplete="off">
+                <span class="erro">
+                    <%= msgErro.senha_parceira %>
+                  </span>
                 <div id="espaco-senha">
                     <div>
                         <input type="checkbox" name="" id="">
