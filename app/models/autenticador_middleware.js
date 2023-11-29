@@ -22,22 +22,22 @@ function gravarUsuAutenticado(usuarioDAL, bcrypt) {
         erros = validationResult(req)
         if (erros.isEmpty()) {
             var dadosForm = {
-                email: req.body.email,
-                senha: req.body.senha,
+                email_parceira: req.body.email_parceira,
+                senha_parceira: req.body.senha_parceira,
             };
             var results = await usuarioDAL.findUserEmail(dadosForm);
             var total = Object.keys(results).length;
             if (total == 1) {
-                if (bcrypt.compareSync(dadosForm.senha, results[0].senha)) {
+                if (bcrypt.compareSync(dadosForm.senha_parceira, results[0].senha_parceira)) {
                     var autenticado = {
-                        autenticado: results[0].nome,
-                        id: results[0].id,
-                        email: results[0].email,
-                        senha: results[0].senha,
-                        cpf: results[0].cpf,
-                        telefone: results[0].telefone,
-                        tipo: results[0].id_tipo_usuario,
-                        img_usuario: results[0].img_usuario
+                        autenticado: results[0].nome_parceira,
+                        id_parceira: results[0].id_parceira,
+                        email_parceira: results[0].email_parceira,
+                        senha_parceira: results[0].senha_parceira,
+                        cpf_parceira: results[0].cpf_parceira,
+                        telefone_parceira: results[0].telefone_parceira,
+                        tipo: results[0].tipo_usuario,
+                        img_parceira: results[0].img_parceira
                     };
                 }
             } else {
