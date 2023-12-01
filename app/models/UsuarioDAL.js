@@ -77,7 +77,7 @@ module.exports = class UsuarioDAL {
     }
     update(camposJson, id) {
         return new Promise((resolve, reject) => {
-            this.conexao.query("UPDATE loja_parceira SET ? WHERE id = ?",
+            this.conexao.query("UPDATE loja_parceira SET ? WHERE id_parceira = ?",
             [camposJson, id],
             function (error, results, fields) {
                 if (error) {

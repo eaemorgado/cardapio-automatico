@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="css/reset.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="css/globalconfig.css">
+    <link rel="stylesheet" href="css/4-informacoes-seller.css">
     <title> - Dashboard</title>
 </head>
 <body>
@@ -38,7 +39,73 @@
             <a href="/configuracoes"><button><i class='bx bx-cog'></i>Configurações</button></a>
         </nav>
         <section>
-            <h1>Informações</h1>
+            <h1>Informações do Local</h1>
+            <article>
+                <div>
+                    <form action="/editarinfo" method="post" enctype="multipart/form-data" >
+                        <article>
+                            <div>
+                                <span><i class='bx bx-store' ></i>Nome</span>
+                                <input type="text" name="nome_parceira" id="espaco-txt-add" value="<%=autenticado.autenticado%>">
+                            </div>
+                            <div>
+                                <span><i class='bx bx-envelope'></i>Email</span>
+                                <input type="text" name="email_parceira" id="espaco-txt-add" value="<%=autenticado.email_parceira%>">
+                            </div>
+                            <div>
+                                <span><i class='bx bx-key'></i>Senha</span>
+                                <input type="text" name="senha_parceira" id="espaco-txt-add" value="">
+                                <span>Preencha apenas se quiser mudar a senha!</span>
+                            </div>
+                            <div>
+                                <span><i class='bx bx-user-pin'></i></i>CPF</span>
+                                <input type="text" name="cpf_parceira" id="espaco-txt-add" value="<%=autenticado.cpf_parceira%>">
+                            </div>
+                            <div>
+                                <span><i class='bx bx-phone'></i>Telefone</span>
+                                <input type="text" name="telefone_parceira" id="espaco-txt-add" value="<%=autenticado.telefone_parceira%>">
+                            </div>
+                            <div>
+                                <span><i class='bx bx-purchase-tag-alt'></i>Categoria</span>
+                                <select name="categoria_parceira" id="espaco-txt-add">
+                                    <option value="">Nenhuma Selecionada</option>
+                                    <option value="">Pizzaria</option>
+                                    <option value="">hamburgueria</option>
+                                    <option value="">Loja</option>
+                                </select>
+                            </div>
+                        </article>
+                        <article>
+                            <div id="espaco-endereco">
+                                <div>
+                                    <span>CEP</span>
+                                    <input type="text" name="cep_parceira" id="espaco-txt-add" value="<%=autenticado.cep_parceira%>">
+                                </div>
+                                <div>
+                                    <span>Endereço</span>
+                                    <input type="text" name="endereco_parceira" id="espaco-txt-add" value="<%=autenticado.endereco_parceira%>">
+                                </div>
+                                <div>
+                                    <span>Numero</span>
+                                    <input type="text" name="numero_parceira" id="espaco-txt-add" value="<%=autenticado.endereco_parceira%>">
+                                </div>
+                            </div>
+                            <div id="espaco-endereco">
+                                <div>
+                                    <span>Cidade</span>
+                                    <input type="text" name="cidade_parceira" id="espaco-txt-add" value="<%=autenticado.cep_parceira%>">
+                                </div>
+                                <div>
+                                    <span>Estado</span>
+                                    <input type="text" name="estado_parceira" id="espaco-txt-add" value="<%=autenticado.endereco_parceira%>">
+                                </div>
+                            </div>
+                        </article>
+                        
+                        <button>Atualizar</button>
+                    </form>
+                </div>
+            </article>
         </section>
     </main>
     <script>

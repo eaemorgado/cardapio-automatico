@@ -294,6 +294,42 @@ router.get("/deletarproduto/:id_produto", function (req, res) {
   res.redirect("/catalogo");
 });
 
+router.post("/editarinfo",
+async function(req, res){
+  try {
+    var dadosForm = {
+      nome_parceira: req.body.nome_parceira,
+      email_parceira: req.body.email_parceira,
+      cpf_parceira: req.body.cpf_parceira,
+      telefone_parceira: req.body.telefone_parceira,
+      cep_parceira: req.body.cep_parceira,
+      endereco_parceira: req.body.endereco_parceira,
+      cidade_parceira: req.body.cidade_parceira,
+      estado_parceira: req.body.estado_parceira,
+      numero_parceira: req.body.numero_parceira,
+      categoria_parceira: req.body.categoria_parceira
+    }
+    // console.log("senha: " + req.body.senha)
+    // if (req.body.senha_parceira != "") {
+    //   dadosForm.senha_parceira = bcrypt.hashSync(req.body.senha_parceira, salt);
+    // }
+    var id_parceira = req.session.autenticado.id_parceira
+    console.log(dadosForm)
+    let resultUpdate = await usuarioDAL.update(dadosForm, id_parceira);
+    
+    if (!resultUpdate.isEmpty) {
+      if (resultUpdate.changedRows == 1) {
+        var result = await usuarioDAL.findID(id_parceira);
+        res.redirect("/informacoes")
+      }
+    } 
+  } catch (e) {
+    console.log(e)
+    res.redirect("/informacoes")
+  }
+  
+
+})
 
 
 module.exports = router

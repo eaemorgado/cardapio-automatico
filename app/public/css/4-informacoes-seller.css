@@ -1,0 +1,48 @@
+#espaco-txt-add{
+    min-height: 30px;
+    height: auto;
+    border: solid 1px #B5B5B5 ;
+    border-radius: 5px;
+    margin-top: 10px;
+    max-width: 300px;
+}
+
+form article div {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    
+}
+
+form {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+
+}
+
+form article {
+    margin-left: 20px;
+}
+
+#espaco-endereco {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+form button {
+    height: 45px;
+    width: 200px;
+    border: none;
+    color: #FFf;
+    background-color: #FF2149;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 80px;
+}
