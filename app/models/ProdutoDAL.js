@@ -1,12 +1,12 @@
 module.exports = class UsuarioDAL {
 
-    constructor(conexao){
-        this.conexao = conexao;
+    constructor(cardapio){
+        this.cardapio = cardapio;
     }
     
     FindAll(){
         return new Promise(function(resolve, reject){
-            this.conexao.query('SELECT * FROM loja_parceira ',  function(error, elements){
+            this.cardapio.query('SELECT * FROM produtos ',  function(error, elements){
                 if(error){
                     return reject(error);
                 }
@@ -15,23 +15,23 @@ module.exports = class UsuarioDAL {
         });
     };
 
-    findUserEmail(camposForm) {
-        return new Promise((resolve, reject) => {
-            this.conexao.query("SELECT * FROM loja_parceira WHERE email_parceira = ?",
-            [camposForm.email_parceira],
-                function (error, elements) {
-                    if (error) {
-                        return reject(error);
-                    }
+    // findUserEmail(camposForm) {
+    //     return new Promise((resolve, reject) => {
+    //         this.cardapio.query("SELECT * FROM produtos WHERE email_parceira = ?",
+    //         [camposForm.email_parceira],
+    //             function (error, elements) {
+    //                 if (error) {
+    //                     return reject(error);
+    //                 }
 
-                    return resolve(elements);
-                });
-        });
-    };
+    //                 return resolve(elements);
+    //             });
+    //     });
+    // };
 
     findID(id) {
         return new Promise((resolve, reject) => {
-            this.conexao.query("SELECT * FROM loja_parceira WHERE id = ?", [id], function (error, elements) {
+            this.cardapio.query("SELECT * FROM produtos WHERE id_produto = ?", [id], function (error, elements) {
                     if (error) {
                         return reject(error);
                     }
@@ -43,7 +43,7 @@ module.exports = class UsuarioDAL {
 
     FindPage(pagina, total){
         return new Promise((resolve, reject)=>{
-            this.conexao.query('SELECT * FROM loja_parceira limit '+ pagina + ', '+ total,  function(error, elements){
+            this.cardapio.query('SELECT * FROM produtos limit '+ pagina + ', '+ total,  function(error, elements){
                 if(error){
                     return reject(error);
                 }
@@ -54,7 +54,7 @@ module.exports = class UsuarioDAL {
 
     TotalReg(){
         return new Promise((resolve, reject)=>{
-            this.conexao.query('SELECT count(*) total FROM loja_parceira ',  function(error, elements){
+            this.cardapio.query('SELECT count(*) total FROM produtos ',  function(error, elements){
                 if(error){
                     return reject(error);
                 }
@@ -63,9 +63,10 @@ module.exports = class UsuarioDAL {
         });
     };
 
+
     create(camposJson) {
         return new Promise((resolve, reject) => {
-            this.conexao.query("insert into loja_parceira set ?",
+            this.cardapio.query("insert into produtos set ?",
                 camposJson,
                 function (error, elements) {
                     if (error) {
@@ -77,7 +78,7 @@ module.exports = class UsuarioDAL {
     }
     update(camposJson, id) {
         return new Promise((resolve, reject) => {
-            this.conexao.query("UPDATE loja_parceira SET ? WHERE id = ?",
+            this.cardapio.query("UPDATE produtos SET ? WHERE id_produto = ?",
             [camposJson, id],
             function (error, results, fields) {
                 if (error) {
@@ -90,7 +91,7 @@ module.exports = class UsuarioDAL {
 
     delete(id) {
         return new Promise((resolve, reject) => {
-            this.conexao.query("UPDATE loja_parceira SET id_tipo_usuario = 0 WHERE id = ?", [id], function (error, results) {
+            this.cardapio.query("UPDATE produtos SET id_tipo_usuario = 0 WHERE id = ?", [id], function (error, results) {
                 if (error) {
                     return reject(error);
                 }
@@ -98,4 +99,6 @@ module.exports = class UsuarioDAL {
             });
         });
     }
+
+    
 }

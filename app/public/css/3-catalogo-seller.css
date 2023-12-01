@@ -121,6 +121,17 @@ configuração da tabela de vendas */
     top: 0;
 }
 
+#espaço-addprod2 {
+    z-index: 5;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: -1000px;
+}
+
+#espaço-addprod2.show{
+    top: 0;
+}
 
 #fundo-addprod {
    background-color: #000;
@@ -155,6 +166,24 @@ configuração da tabela de vendas */
     text-align: center;
 }
 
+#tabela-addprod form button {
+    height: 45px;
+    border: none;
+    color: #FFf;
+    background-color: #FF2149;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+    
+    
+}
+
+#tabela-addprod form button:hover {
+    transform: scale(1.03);
+    transition: 0.3 cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
 #espaco-txt-add, #espaco-select-add {
     min-height: 30px;
     height: auto;
@@ -176,4 +205,70 @@ configuração da tabela de vendas */
 }
 
 
+#backrow3 {
+    font-size: 50px;
+    color: #B5B5B5;
+    cursor: pointer;
+}
+
+#backrow3:hover {
+    transform: scale(1.03);
+}
+
+
+/* espaço editar produto */
+
+
+#tabela-edit form{
+    height: auto;
+    width: 400px;
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+#tabela-edit form h3 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+#tabela-edit form button {
+    height: 45px;
+    border: none;
+    color: #FFf;
+    background-color: #FF2149;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+    
+    
+}
+
+#tabela-edit form button:hover {
+    transform: scale(1.03);
+    transition: 0.3 cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+#canceledit {
+    width: 400px;
+    height: 45px;
+    border: none;
+    color: #FF2149;
+    background-color: #E8E8E8;
+    border: #FF2149 2px solid;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+#canceledit:hover {
+    transform: scale(1.03);
+    transition: 0.3 cubic-bezier(0.075, 0.82, 0.165, 1);
+}
 

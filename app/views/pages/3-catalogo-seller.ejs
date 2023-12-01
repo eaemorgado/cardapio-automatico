@@ -13,29 +13,27 @@
 <body>
     <div id="espaço-addprod" class="">
         <div id="tabela-addprod">
-            <form action="post">
+            <form action="/publicarproduto" method="post" enctype="multipart/form-data">
                 <i class='bx bx-chevron-left' id="backrow2"></i>
                 <h3>Informações do Produto</h3>
                 <span>Imagem</span>
-                <input type="file" name="" id="espaco-img-add">
+                <input type="file" name="img_produto" id="espaco-img-add">
                 <span>Nome</span>
-                <input type="text" name="" id="espaco-txt-add">
+                <input type="text" name="nome_produto" autocomplete="off" id="espaco-txt-add">
                 <span>Descrição</span>
-                <input type="text" name="" id="espaco-txt-add">
+                <input type="text" name="descricao_produto" autocomplete="off" id="espaco-txt-add">
                 <span>Preço</span>
-                <input type="number" name="" id="espaco-txt-add">
+                <input type="number" name="preco_produto" autocomplete="off" id="espaco-txt-add">
                 <span>Categoria</span>
-                <select name="" id="espaco-select-add">
+                <select name="categoria_produto" id="espaco-select-add">
                     <option value="">Nenhuma Selecionada</option>
                 </select>
-                <a href="/catalogo">
-                    <button>Cancelar</button>
-                </a>
                 <button type="submit">Publicar</button>
             </form>
         </div>
-        <div id="fundo-addprod"><h1>morgadoi</h1></div>
+        <div id="fundo-addprod"></div>
     </div>
+
     <header>
         <div>
             <img src="" alt="logo">
@@ -47,9 +45,34 @@
             <i class='bx bx-chevron-down' id="user-more"></i>
         </div>
         <div id="seller-not" class="">
-            <div>
-                <i class='bx bx-chevron-left' id="backrow"></i>
+            <i class='bx bx-chevron-left' id="backrow"></i>
+            <div id="content-notificacao">   
                 <span>Notificações</span>
+                <div id="espaco-notificacao">
+                    <% notificacoes.forEach(function(notificacao){ %>
+                    <article id="notificacao">
+                        <div>
+                            <i class='bx bxs-bell-ring'></i>
+                            <span><%=notificacao.titulo_notificacao%></span>
+                        </div>
+                        <div>
+                            <p><%=notificacao.descricao_notificacao%></p>
+                        </div>
+                    </article>
+                    <% }); %>
+                    <% notificacoesUsuario.forEach(function(notificacao){ %>
+                        <article id="notificacao">
+                            <div>
+                                <i class='bx bxs-bell-ring'></i>
+                                <span><%=notificacao.titulo_notificacao%></span>
+                            </div>
+                            <div>
+                                <p><%=notificacao.descricao_notificacao%></p>
+                            </div>
+                        </article>
+                        <% }); %>
+                    
+                </div>
             </div>
             
         </div>
@@ -92,20 +115,23 @@
                       <th>Valor</th>  
                       <th>Ação</th> 
                     </tr>
+                    <% produtos.forEach(function(produto){ %>
                     <tr>
                         <td><img src="" alt="img_produto"></td>
-                      <td>Hamburguer</td>
-                      <td>Lanche</td>    
-                      <td>R$ 00,00</td>
+                      <td><%=produto.nome_produto%></td>
+                      <td><%=produto.categoria_produto%></td>    
+                      <td>R$<%=produto.preco_produto%></td>
                       <td>
-                        <a href="">
+                        <a href="/editarproduto/<%=produto.id_produto%>">
                             <button id="table-editar">Editar</button>
                         </a>
-                        <a href="">
+                        <a href="/deletarproduto/<%=produto.id_produto%>">
                             <button id="table-deletar">Deletar</button>
                         </a>
                       </td>
                     </tr>
+                    <% }); %>
+                    
                   </table>
             </article>
             
@@ -139,6 +165,7 @@
         closepopup.addEventListener("click", ()=>{
             formProd.classList.remove("show");
         })
+
 
     </script>
 </body>

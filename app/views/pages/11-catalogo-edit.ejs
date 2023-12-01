@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../css/globalconfig.css">
+    <link rel="stylesheet" href="../css/3-catalogo-seller.css">
+    <title> - Catalogo</title>
+</head>
+
+<body>
+    <header>
+        <div>
+            <img src="" alt="logo">
+        </div>
+        <div id="header-fuctions">
+            <i class='bx bx-bell' id="user-bell"></i>
+            <span id="user-name"><%=autenticado.autenticado%></span>
+            <i class='bx bxs-user-circle' id="user-icon"></i>
+            <i class='bx bx-chevron-down' id="user-more"></i>
+        </div>
+        <div id="seller-not" class="">
+            <div>
+                <i class='bx bx-chevron-left' id="backrow"></i>
+                <span>Notificações</span>
+                
+            </div>
+            
+        </div>
+    </header>
+    <main>
+        <nav>
+            <a href="/dashboard"><button><i class='bx bxs-dashboard'></i>Dashboard</button></a>
+            <a href="/catalogo"><button class="actived"><i class='bx bx-food-menu'></i>Catalogo</button></a>
+            <a href="/informacoes"><button><i class='bx bx-store' ></i>Informações</button></a>
+            <a href="/chat"><button><i class='bx bx-message-square-dots'></i>Chat</button></a>
+            <a href="/vendas"><button><i class='bx bx-objects-vertical-bottom'></i>Vendas</button></a>
+            <a href="/assinatura"><button><i class='bx bxs-bookmark-plus'></i>Assinatura</button></a>
+            <a href="/configuracoes"><button><i class='bx bx-cog'></i>Configurações</button></a>
+        </nav>
+        <section>
+            <article id="article1">
+                <h1>Catalogo</h1>
+            </article>
+            <article>
+                <div id="tabela-edit">
+                    <% produtos.forEach(function(produto){ %>
+                    <form action="/editarproduto/<%=produto.id_produto%>" method="post">
+                        <h3>Editar Informações</h3>
+                        <span>Nome</span>
+                        <input type="text" value="<%=produto.nome_produto%>" autocomplete="off" name="nome_produto" id="espaco-txt-add">
+                        <span>Descrição</span>
+                        <input type="text" value="<%=produto.descricao_produto%>" autocomplete="off" name="descricao_produto" id="espaco-txt-add">
+                        <span>Preço</span>
+                        <input type="number" value="<%=produto.preco_produto%>" autocomplete="off" name="preco_produto" id="espaco-txt-add">
+                        <span>Categoria</span>
+                        <select name="categoria_produto" id="espaco-select-add">
+                            <option value="">Nenhuma Selecionada</option>
+                        </select>
+                        <button type="submit">Publicar</button>
+                    </form>
+                    <% }); %>
+                    <a href="/catalogo">
+                        <button type="submit" id="canceledit">Cancelar</button>
+                    </a>
+                    
+                </div>
+            </article>
+            
+        </section>
+    </main>
+    <script>
+        // configuração das notificações 
+
+        const notbutton = document.getElementById("user-bell");
+        const notbar = document.getElementById("seller-not");
+        const notclose = document.getElementById("backrow");
+
+        notbutton.addEventListener("click", ()=>{
+            notbar.classList.add("show");
+        })
+
+        notclose.addEventListener("click", ()=>{
+            notbar.classList.remove("show");
+        })
+
+
+    </script>
+</body>
+</html>
