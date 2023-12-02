@@ -42,7 +42,22 @@
             <h1>Informações do Local</h1>
             <article>
                 <div>
-                    <form action="/editarinfo" method="post" enctype="multipart/form-data" >
+                    <form action="/editarinfo" method="post">
+                        <div>
+                            <i class='bx bx-store' ></i>
+                            <span>Nome do Comercio</span>
+                        </div>
+                        <input type="text" id="espaco-txt-login" name="nome_parceira" autocomplete="off">
+                        <div>
+                            <i class='bx bx-envelope'></i>
+                            <span>Email</span>
+                        </div>
+                        <input type="text" id="espaco-txt-login" name="email_parceira" autocomplete="off">
+                        <button>enviar</button>
+                    </form>
+                    <!-- <form action="/editarinfo" method="post" enctype="multipart/form-data" >
+                        <input type="text" name="nome_parceira" id="espaco-txt-add" value="<%=autenticado.autenticado%>">
+
                         <article>
                             <div>
                                 <span><i class='bx bx-store' ></i>Nome</span>
@@ -103,7 +118,7 @@
                         </article>
                         
                         <button>Atualizar</button>
-                    </form>
+                    </form> -->
                 </div>
             </article>
         </section>

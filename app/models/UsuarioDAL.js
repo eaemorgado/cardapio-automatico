@@ -31,7 +31,7 @@ module.exports = class UsuarioDAL {
 
     findID(id) {
         return new Promise((resolve, reject) => {
-            this.conexao.query("SELECT * FROM loja_parceira WHERE id = ?", [id], function (error, elements) {
+            this.conexao.query("SELECT * FROM loja_parceira WHERE id_parceira = ?", [id], function (error, elements) {
                     if (error) {
                         return reject(error);
                     }

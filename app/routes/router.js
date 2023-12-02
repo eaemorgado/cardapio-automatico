@@ -300,14 +300,6 @@ async function(req, res){
     var dadosForm = {
       nome_parceira: req.body.nome_parceira,
       email_parceira: req.body.email_parceira,
-      cpf_parceira: req.body.cpf_parceira,
-      telefone_parceira: req.body.telefone_parceira,
-      cep_parceira: req.body.cep_parceira,
-      endereco_parceira: req.body.endereco_parceira,
-      cidade_parceira: req.body.cidade_parceira,
-      estado_parceira: req.body.estado_parceira,
-      numero_parceira: req.body.numero_parceira,
-      categoria_parceira: req.body.categoria_parceira
     }
     // console.log("senha: " + req.body.senha)
     // if (req.body.senha_parceira != "") {
@@ -325,7 +317,7 @@ async function(req, res){
     } 
   } catch (e) {
     console.log(e)
-    res.redirect("/informacoes")
+    res.redirect("/dashboard")
   }
   
 
