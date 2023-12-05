@@ -8,15 +8,16 @@ create table loja_parceira (
 	email_parceira varchar (255) not null,
     senha_parceira varchar (255) not null,
     cpf_parceira varchar (55),
-    telefone_parceira varchar (55),
+    telefone_parceira int,
     cep_parceira int,
     endereco_parceira varchar (255),
+    bairro_parceira varchar (255),
     cidade_parceira varchar (255),
-    estado_parceira varchar (55),
     numero_parceira int,
     categoria_parceira varchar (55),
     img_parceira varchar (255) default 'img/user.png',
-    tipo_usuario int default '2'
+    tipo_usuario int default '2',
+    plano_parceira varchar(55) default 'Bronze'
 );
 
 create table produtos (
@@ -43,4 +44,9 @@ create table notificacoesUsuario (
     titulo_notificacao varchar (55),
     descricao_notificacao varchar (255),
     categoria_notificacao varchar (55)
+);
+
+create table carrinho (
+	id_carrinho int auto_increment primary key not null,
+    id_cliente int
 );

@@ -39,10 +39,11 @@ function gravarUsuAutenticado(usuarioDAL, bcrypt) {
                         categoria_parceira: results[0].categoria_parceira,
                         cep_parceira: results[0].cep_parceira,
                         endereco_parceira: results[0].endereco_parceira,
+                        bairro_parceira: results[0].bairro_parceira,
                         cidade_parceira: results[0].cidade_parceira,
-                        estado_parceira: results[0].estado_parceira,
                         numero_parceira: results[0].numero_parceira,
                         tipo: results[0].tipo_usuario,
+                        plano_parceira: results[0].plano_parceira,
                         img_parceira: results[0].img_parceira
                     };
                 }

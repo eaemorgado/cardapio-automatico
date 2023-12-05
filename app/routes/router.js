@@ -153,6 +153,40 @@ router.get("/cadastro", function(req, res){
   res.render("pages/10-cadastro-seller", {autenticado:req.session.autenticado, listaErros: null, dadosNotificacao: null, valores: req.body})
 })
 
+router.get("/cardapio", function(req, res){
+  res.render("pages/12-cardapio-user", {autenticado:req.session.autenticado, listaErros: null, dadosNotificacao: null, valores: req.body})
+})
+
+router.get("/:nome_parceira/:id_parceira", function(req, res){
+  try {
+    const id_parceira = req.params.id_parceira;
+    const sqlProdutos = 'SELECT * FROM produtos WHERE id_parceira = ?';
+    const sqlParceira = 'SELECT * FROM loja_parceira WHERE id_parceira = ?';
+
+    conexao.query(sqlProdutos, [id_parceira], (errProdutos, resultProdutos) => {
+      if (errProdutos) {
+        res.status(500).json({ error: 'Erro ao buscar produtos' });
+      } else {
+        conexao.query(sqlParceira, [id_parceira], (errParceira, resultParceira) => {
+          if (errParceira) {
+            res.status(500).json({ error: 'Erro ao buscar loja parceira' });
+          } else {
+            res.render("pages/12-cardapio-user", {produtos: resultProdutos, parceira: resultParceira})
+          }
+        })
+      }
+    })
+    
+  } catch (error) {
+    res.status(500).json({ error: 'Erro ao buscar dados' });
+  }
+  
+  // res.render("pages/12-cardapio-user", {autenticado:req.session.autenticado, listaErros: null, dadosNotificacao: null, valores: req.body})
+
+
+})
+
+
 
 // funcções
 
@@ -300,6 +334,13 @@ async function(req, res){
     var dadosForm = {
       nome_parceira: req.body.nome_parceira,
       email_parceira: req.body.email_parceira,
+      cpf_parceira: req.body.cpf_parceira,
+      cep_parceira: req.body.cep_parceira,
+      endereco_parceira: req.body.endereco_parceira,
+      bairro_parceira: req.body.bairro_parceira,
+      cidade_parceira: req.body.cidade_parceira,
+      numero_parceira: req.body.numero_parceira,
+      categoria_parceira: req.body.categoria_parceira,
     }
     // console.log("senha: " + req.body.senha)
     // if (req.body.senha_parceira != "") {
@@ -312,7 +353,7 @@ async function(req, res){
     if (!resultUpdate.isEmpty) {
       if (resultUpdate.changedRows == 1) {
         var result = await usuarioDAL.findID(id_parceira);
-        res.redirect("/informacoes")
+        res.redirect("/sair")
       }
     } 
   } catch (e) {

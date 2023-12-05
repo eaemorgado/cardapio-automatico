@@ -42,83 +42,64 @@
             <h1>Informações do Local</h1>
             <article>
                 <div>
+                    <div id="acesso">
+                        <span>Acesso do cliente ao seu Catalogo:</span><br>
+                        <input type="text" id="espaco-txt-add" disabled value="www.nomesite/<%=autenticado.autenticado%>/<%=autenticado.id_parceira%>" >
+                     </div>
                     <form action="/editarinfo" method="post">
+                        <article>
                         <div>
-                            <i class='bx bx-store' ></i>
-                            <span>Nome do Comercio</span>
+                            <span>Nome</span>
+                            <input type="text" id="espaco-txt-add" value="<%=autenticado.autenticado%>" name="nome_parceira" autocomplete="off">
                         </div>
-                        <input type="text" id="espaco-txt-login" name="nome_parceira" autocomplete="off">
                         <div>
-                            <i class='bx bx-envelope'></i>
-                            <span>Email</span>
+                            <span>email</span>
+                            <input type="text" id="espaco-txt-add" value="<%=autenticado.email_parceira%>" name="email_parceira" autocomplete="off">
                         </div>
-                        <input type="text" id="espaco-txt-login" name="email_parceira" autocomplete="off">
-                        <button>enviar</button>
+                        <div>
+                            <span>CPF</span>
+                            <input type="text" id="espaco-txt-add" value="<%=autenticado.cpf_parceira%>" name="cpf_parceira" autocomplete="off">
+                        </div>
+                        <div>
+                            <span>Categoria</span>
+                            <select name="categoria_parceira" id="espaco-txt-add">
+                                <option value="">Nenhuma selecionada</option>
+                                <option value="">Pizzaria</option>
+                                <option value="">Hamburgueria</option>
+                                <option value="">Lanchonete</option>
+                            </select>
+                        </div>
+                        <div>
+                            <span></i>Plano</span>
+                            <input type="text" id="espaco-txt-add" value="<%=autenticado.plano_parceira%>" disabled name="" autocomplete="off">
+                        </div>
+                        </article>
+                        <article>
+                            <div>
+                                <span>CEP</span>
+                                <input type="text" id="espaco-txt-add" class="cep" value="<%=autenticado.cep_parceira%>" name="cep_parceira" autocomplete="off">
+                                <span class="message"></span>
+                            </div>
+                            <div>
+                                <span>Endereço</span>
+                                <input type="text" id="espaco-txt-add" class="endereco" value="<%=autenticado.endereco_parceira%>" name="endereco_parceira" autocomplete="off">
+                            </div>
+                            <div>
+                                <span>Bairro</span>
+                                <input type="text" id="espaco-txt-add" class="bairro" value="<%=autenticado.bairro_parceira%>" name="bairro_parceira" autocomplete="off">
+                            </div>
+                            <div>
+                                <span>Cidade</span>
+                                <input type="text" id="espaco-txt-add" class="cidade" value="<%=autenticado.cidade_parceira%>" name="cidade_parceira" autocomplete="off">
+                            </div>
+                            <div>
+                                <span>Numero</span>
+                                <input type="text" id="espaco-txt-add" value="<%=autenticado.numero_parceira%>" name="numero_parceira" autocomplete="off">
+                            </div>
+                            </article>
+                        <button class="buscar">enviar</button>
                     </form>
-                    <!-- <form action="/editarinfo" method="post" enctype="multipart/form-data" >
-                        <input type="text" name="nome_parceira" id="espaco-txt-add" value="<%=autenticado.autenticado%>">
 
-                        <article>
-                            <div>
-                                <span><i class='bx bx-store' ></i>Nome</span>
-                                <input type="text" name="nome_parceira" id="espaco-txt-add" value="<%=autenticado.autenticado%>">
-                            </div>
-                            <div>
-                                <span><i class='bx bx-envelope'></i>Email</span>
-                                <input type="text" name="email_parceira" id="espaco-txt-add" value="<%=autenticado.email_parceira%>">
-                            </div>
-                            <div>
-                                <span><i class='bx bx-key'></i>Senha</span>
-                                <input type="text" name="senha_parceira" id="espaco-txt-add" value="">
-                                <span>Preencha apenas se quiser mudar a senha!</span>
-                            </div>
-                            <div>
-                                <span><i class='bx bx-user-pin'></i></i>CPF</span>
-                                <input type="text" name="cpf_parceira" id="espaco-txt-add" value="<%=autenticado.cpf_parceira%>">
-                            </div>
-                            <div>
-                                <span><i class='bx bx-phone'></i>Telefone</span>
-                                <input type="text" name="telefone_parceira" id="espaco-txt-add" value="<%=autenticado.telefone_parceira%>">
-                            </div>
-                            <div>
-                                <span><i class='bx bx-purchase-tag-alt'></i>Categoria</span>
-                                <select name="categoria_parceira" id="espaco-txt-add">
-                                    <option value="">Nenhuma Selecionada</option>
-                                    <option value="">Pizzaria</option>
-                                    <option value="">hamburgueria</option>
-                                    <option value="">Loja</option>
-                                </select>
-                            </div>
-                        </article>
-                        <article>
-                            <div id="espaco-endereco">
-                                <div>
-                                    <span>CEP</span>
-                                    <input type="text" name="cep_parceira" id="espaco-txt-add" value="<%=autenticado.cep_parceira%>">
-                                </div>
-                                <div>
-                                    <span>Endereço</span>
-                                    <input type="text" name="endereco_parceira" id="espaco-txt-add" value="<%=autenticado.endereco_parceira%>">
-                                </div>
-                                <div>
-                                    <span>Numero</span>
-                                    <input type="text" name="numero_parceira" id="espaco-txt-add" value="<%=autenticado.endereco_parceira%>">
-                                </div>
-                            </div>
-                            <div id="espaco-endereco">
-                                <div>
-                                    <span>Cidade</span>
-                                    <input type="text" name="cidade_parceira" id="espaco-txt-add" value="<%=autenticado.cep_parceira%>">
-                                </div>
-                                <div>
-                                    <span>Estado</span>
-                                    <input type="text" name="estado_parceira" id="espaco-txt-add" value="<%=autenticado.endereco_parceira%>">
-                                </div>
-                            </div>
-                        </article>
-                        
-                        <button>Atualizar</button>
-                    </form> -->
                 </div>
             </article>
         </section>
@@ -137,6 +118,44 @@
         notclose.addEventListener("click", ()=>{
             notbar.classList.remove("show");
         })
+
+        const cep = document.querySelector(".cep");
+        const endereco = document.querySelector(".endereco");
+        const bairro = document.querySelector(".bairro");
+        const cidade = document.querySelector(".cidade");
+        const messagespan = document.querySelector(".message");
+        cep.addEventListener("focusout", async () => {
+    try {
+        const onlyNumbers = /^[0-9]+$/;
+        const cepValid = /^[0-9]{8}$/;
+
+        if (!onlyNumbers.test(cep.value) || !cepValid.test(cep.value)) {
+            throw { cep_error: "Cep Inválido" };
+        }
+
+        const response = await fetch(`https://viacep.com.br/ws/${cep.value}/json/`);
+
+        if (!response.ok) {
+            throw { cep_error: "Erro na requisição" };
+        }
+
+        const responseCep = await response.json(); // Corrigido com await
+
+        endereco.value = responseCep.logradouro;
+        bairro.value = responseCep.bairro;
+        cidade.value = responseCep.localidade;
+    } catch (error) {
+        if (error?.cep_error) {
+            messagespan.textContent = error.cep_error;
+            setTimeout(() => {
+                messagespan.textContent = "";
+            }, 5000);
+        }
+        console.error(error);
+    }
+});
+
+
     </script>
 </body>
 </html>

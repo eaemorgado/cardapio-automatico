@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/12-cardapio-user.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <title> - Cardapio</title>
+</head>
+<body>
+    <header>
+        <div>
+            <img src="" alt="logo">
+        </div>
+        <div id="header-fuctions">
+            <i class='bx bx-menu'></i>
+        </div> 
+    </header>
+    <main>
+        <div id="main">
+            <% parceira.forEach(function(infoParceira){ %>
+            <div id="info-vendedor">
+                <span><%=infoParceira.nome_parceira%></span>
+            </div>
+            <% }); %>
+            <div id="title">
+                <span>Cardapio</span>
+                <h1>Conheça nosso Cardápio</h1>
+           </div>
+
+           <section>
+            <% produtos.forEach(function(produto){ %>
+            <article>
+                <div id="espaco-img">
+                    <img src="../<%=produto.img_produto%>" alt="">
+                </div>
+                
+                <div id="espaco-info">
+                    <span><%=produto.nome_produto%></span>
+                    <p>R$<%=produto.preco_produto%></p>
+                    <a href="/adicionar/<%=produto.id_produto%>">
+                        <button>Adicionar +</button>
+                    </a>
+                    
+                </div>
+                
+            </article>
+            <% }); %>
+           </section>
+        </div>
+            
+    </main>
+</body>
+</html>

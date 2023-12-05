@@ -46,3 +46,13 @@ form button {
     bottom: 0;
     margin: 80px;
 }
+
+#acesso {
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+#acesso input {
+    width: 100%;
+    
+}
