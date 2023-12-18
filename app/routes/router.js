@@ -157,7 +157,7 @@ router.get("/cardapio", function(req, res){
   res.render("pages/12-cardapio-user", {autenticado:req.session.autenticado, listaErros: null, dadosNotificacao: null, valores: req.body})
 })
 
-router.get("/:nome_parceira/:id_parceira", function(req, res){
+router.get("/:nome_parceira/:id_parceira",function(req, res){
   try {
     const id_parceira = req.params.id_parceira;
     const sqlProdutos = 'SELECT * FROM produtos WHERE id_parceira = ?';

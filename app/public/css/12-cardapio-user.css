@@ -96,3 +96,45 @@ article div img {
     color: #979797;
     max-width: 100%;
 }
+
+
+footer {
+    background-color: #FF2149;
+    width: 100%;
+    height: 70px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+#button-sacola i {
+    color: #FF2149;
+    font-size: 30px;
+}
+
+#button-sacola {
+    background-color: #f1f1f1;
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 10px;
+    z-index: 3;
+}
+
+footer span {
+   color: #f1f1f1;
+   font-weight: bold;
+   margin: 20px;
+   
+}
