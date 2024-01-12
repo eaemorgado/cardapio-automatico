@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/reset.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="css/globalconfig.css">
+    <link rel="stylesheet" href="css/9-login-seller.css">
+    <script src="js/notify.js"></script>
+    <!-- CSS -->
+    <!-- https://github.com/simple-notify/simple-notify -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.css" />
+    <!-- JS -->
+    <script src="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.js"></script>
+    <title> - login</title>
+</head>
+<body>
+    <% 
+    let msgErro = {"email_cliente":"", "senha_cliente":""};
+    let avisoErro = {"email_cliente":"", "senha_cliente":""};
+    if(listaErros){
+        listaErros.errors.forEach(function(itemErro){
+            if(itemErro.path == "email_cliente"){
+                avisoErro.email_cliente = "erro";
+                msgErro.email_cliente += " "+itemErro.msg;
+                %>
+                <script>
+                    notify("Erro no preenchimento","Verifique o campo email<br><%= itemErro.msg%>", "error", "center")                        
+                </script>
+                <%
+            }
+            if(itemErro.path == "senha_cliente"){
+                avisoErro.senha_cliente = "erro";
+                msgErro.senha_cliente = itemErro.msg;
+                %>
+                <script>
+                    notify("Erro no preenchimento","Verifique o campo senha<br><%= itemErro.msg%>", "error", "center")                        
+                </script>
+                <%                
+            }
+            
+        })
+    }
+    if (dadosNotificacao) { %>
+        <script>
+                notify("<%= dadosNotificacao.titulo%>","<%= dadosNotificacao.mensagem%>", "<%= dadosNotificacao.tipo%>", "center")
+                if("<%= dadosNotificacao.tipo %>" == "success"){
+                    setTimeout(function(){window.location="/user"}, 3000)
+                }                        
+        </script>
+    <% } %>
+    <main>
+        <div id="espaco-form-login">
+            <form action="/logar-cliente" method="post">
+                <h1>Login</h1>
+                <div>
+                    <i class='bx bx-envelope'></i>
+                    <span>Email</span>
+                </div>
+                <input type="text" id="espaco-txt-login" class="<%= avisoErro.email_cliente %>" name="email_cliente" autocomplete="off">
+                <span class="erro">
+                    <%= msgErro.email_cliente %>
+                  </span>
+                <div>
+                    <i class='bx bx-key'></i>
+                    <span>Senha</span>
+                </div>
+                <input type="password" id="espaco-txt-login" class="<%= avisoErro.senha_cliente %>" name="senha_cliente" autocomplete="off">
+                <span class="erro">
+                    <%= msgErro.senha_cliente %>
+                  </span>
+                <div id="espaco-senha">
+                    <div>
+                        <input type="checkbox" name="" id="">
+                        <span>Lembrar Senha</span>
+                    </div>
+                    <a href=""><span style="color: #FF2149; font-weight: bold; cursor: pointer;">Esqueceu a senha?</span></a>
+                    
+                </div>
+                <button>Entrar</button>
+                <span>
+                    Ao acessar este site, você concorda em cumprir nossos
+                    <a href=""><strong style=" color: #FF2149; font-weight: bold; cursor: pointer;">Termos de Uso</strong></a> e reconhece que leu nossa 
+                    <a href=""><strong style=" color: #FF2149; font-weight: bold; cursor: pointer;">Política de Privacidade</strong>.</a>
+                </span>
+                <h4>Não tem uma conta? <a href="/cadastro-cliente"><strong style="color: #FF2149; cursor: pointer;">Crie Agora!</strong></a></h4>
+            </form>
+            <div>
+
+            </div>
+        </div>
+        
+    </main>
+</body>
+</html>

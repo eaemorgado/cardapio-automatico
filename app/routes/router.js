@@ -27,9 +27,14 @@ var conexao = fabricaDeConexao();
 
 
 var { verificarUsuAutenticado, limparSessao, gravarUsuAutenticado, verificarUsuAutorizado } = require("../models/autenticador_middleware");
+var { verificarUsuAutenticadoCliente, gravarUsuAutenticadoCliente, verificarUsuAutorizadoCliente } = require("../models/autenticador_middleware_cliente");
+
 
 var UsuarioDAL = require("../models/UsuarioDAL");
 var usuarioDAL = new UsuarioDAL(conexao);
+
+var ClienteDAL = require("../models/ClienteDAL");
+var clienteDAL = new ClienteDAL(conexao);
 
 var ProdutoDAL = require("../models/ProdutoDAL");
 var produtoDAL = new ProdutoDAL(conexao);
@@ -149,15 +154,23 @@ router.get("/login", function(req, res){
   res.render("pages/9-login-seller", {autenticado:req.session.autenticado, listaErros: null, dadosNotificacao: null, valores: req.body})
 })
 
+router.get("/login-cliente", function(req, res){
+  res.render("pages/13-login-user", {autenticado:req.session.autenticado, listaErros: null, dadosNotificacao: null, valores: req.body})
+})
+
 router.get("/cadastro", function(req, res){
   res.render("pages/10-cadastro-seller", {autenticado:req.session.autenticado, listaErros: null, dadosNotificacao: null, valores: req.body})
+})
+
+router.get("/cadastro-cliente", function(req, res){
+  res.render("pages/14-cadastro-user", {autenticado:req.session.autenticado, listaErros: null, dadosNotificacao: null, valores: req.body})
 })
 
 router.get("/cardapio", function(req, res){
   res.render("pages/12-cardapio-user", {autenticado:req.session.autenticado, listaErros: null, dadosNotificacao: null, valores: req.body})
 })
 
-router.get("/:nome_parceira/:id_parceira",function(req, res){
+router.get("/cardapio/:id_parceira",function(req, res){
   try {
     const id_parceira = req.params.id_parceira;
     const sqlProdutos = 'SELECT * FROM produtos WHERE id_parceira = ?';
@@ -229,6 +242,41 @@ router.post("/cadastrar",
     }
   });
 
+
+router.post("/cadastrar-cliente",
+body("nome_cliente")
+  .isLength({ min: 3, max: 50 }).withMessage("Mínimo de 3 letras e máximo de 50!"),
+body("email_cliente")
+  .isEmail().withMessage("Digite um e-mail válido!"),
+body("senha_cliente")
+  .isStrongPassword()
+  .withMessage("A senha deve ter no mínimo 8 caracteres, 1 letra maiúscula, 1 caractere especial e 1 número"),
+async function (req, res) {
+  var dadosForm = {
+    nome_cliente: req.body.nome_cliente,
+    email_cliente: req.body.email_cliente,
+    senha_cliente: bcrypt.hashSync(req.body.senha_cliente, salt),
+  };
+  const erros = validationResult(req);
+  if (!erros.isEmpty()) {
+    return res.render("pages/14-cadastro-user", { listaErros: erros, dadosNotificacao: null, valores: req.body })
+  }
+  try {
+    let insert = await clienteDAL.create(dadosForm);
+    console.log(insert);
+    res.render("pages/14-cadastro-user", {
+      listaErros: null, dadosNotificacao: {
+        titulo: "Cadastro realizado!", mensagem: "Usuário criado com o id " + insert.insertId + "!", tipo: "success"
+      }, valores: req.body
+    })
+  } catch (e) {
+    res.render("pages/14-cadastro-user", {
+      listaErros: erros, dadosNotificacao: {
+        titulo: "Erro ao cadastrar!", mensagem: "Verifique os valores digitados!", tipo: "error"
+      }, valores: req.body
+    })
+  }
+});
   
 router.post(
   "/logar",
@@ -255,6 +303,33 @@ router.post(
       res.render("pages/9-login-seller", { listaErros: erros, dadosNotificacao: { titulo: "Erro ao logar!", mensagem: "Usuário e/ou senha inválidos!", tipo: "error" } })
     }
   });
+
+router.post(
+  "/logar-cliente",
+  body("email_cliente")
+    .isLength({ min: 4, max: 45 })
+    .withMessage("O nome de usuário/e-mail esta incorreto!"),
+  body("senha_cliente")
+    .isStrongPassword()
+    .withMessage("Verifique novamente a senha digitada!"),
+
+  gravarUsuAutenticadoCliente(clienteDAL, bcrypt),
+  function (req, res) {
+    const erros = validationResult(req);
+    if (!erros.isEmpty()) {
+      return res.render("pages/13-login-user", { listaErros: erros, dadosNotificacao: null })
+    }
+    if (req.session.autenticado != null) {
+      res.render("pages/13-login-user", {
+        listaErros: null, dadosNotificacao: {
+          titulo: "Login realizado!", mensagem: "Usuário logado com sucesso", tipo: "success"
+        }, valores: req.body
+      })
+    } else {
+      res.render("pages/13-login-user", { listaErros: erros, dadosNotificacao: { titulo: "Erro ao logar!", mensagem: "Usuário e/ou senha inválidos!", tipo: "error" } })
+    }
+  });
+  
 
   
 router.post("/publicarproduto",
@@ -364,5 +439,8 @@ async function(req, res){
 
 })
 
+router.post("/add/:id_produto", async function(res, res){
+  res.redirect("/")
+})
 
 module.exports = router

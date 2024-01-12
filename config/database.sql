@@ -20,6 +20,20 @@ create table loja_parceira (
     plano_parceira varchar(55) default 'Bronze'
 );
 
+create table cliente (
+	id_cliente int auto_increment primary key not null,
+    nome_cliente varchar (255) not null,
+	email_cliente varchar (255) not null,
+    senha_cliente varchar (255) not null, 
+    telefone_cliente int,
+    cep_cliente int,
+    endereco_cliente varchar (255),
+    bairro_cliente varchar (255),
+    cidade_cliente varchar (255),
+    tipo_usuario int default '1',
+    numero_cliente int
+);
+
 create table produtos (
 	id_produto int auto_increment primary key not null,
     id_parceira int not null,

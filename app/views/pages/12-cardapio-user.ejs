@@ -10,13 +10,14 @@
 
     <title> - Cardapio</title>
 </head>
+
 <body>
     <header>
         <div>
             <img src="" alt="logo">
         </div>
         <div id="header-fuctions">
-            <i class='bx bx-menu'></i>
+            <i class='bx bx-menu' id="menuicon"></i>
         </div> 
     </header>
     <main>
@@ -41,7 +42,7 @@
                 <div id="espaco-info">
                     <span><%=produto.nome_produto%></span>
                     <p>R$<%=produto.preco_produto%></p>
-                    <a href="/adicionar/<%=produto.id_produto%>">
+                    <a href="/add/<%=produto.id_produto%>">
                         <button>Adicionar +</button>
                     </a>
                     
@@ -57,5 +58,29 @@
     <footer>
         <span>Valor Total:</span>
     </footer>
+    <!-- <div id="seller-not" class="">
+        <i class='bx bx-chevron-left' id="backrow"></i>
+        <div id="content-notificacao">   
+            <span>Notificações</span>
+            <div id="espaco-notificacao">
+            </div>
+        </div>
+    </div> -->
+    <script>
+        // configuração das notificações 
+
+        const notbutton = document.getElementById("menuicon");
+        const notbar = document.getElementById("seller-not");
+        const notclose = document.getElementById("backrow");
+
+        notbutton.addEventListener("click", ()=>{
+            notbar.classList.add("show");
+        })
+
+        notclose.addEventListener("click", ()=>{
+            notbar.classList.remove("show");
+        })
+
+    </script>
 </body>
 </html>
